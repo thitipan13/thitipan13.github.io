@@ -122,7 +122,7 @@ const potionLight=new THREE.PointLight(0xf43f5e,0.95,2.8);
 potionLight.position.set(1.425,0.9,2.468);
 scene.add(potionLight);
 
-const texLoader=new THREE.TextureLoader();
+const texLoader=new THREE.TextureLoader();texLoader.setCrossOrigin('anonymous');
 function getTexture(f){const t=texLoader.load(f);t.encoding=THREE.sRGBEncoding;return t;}
 
 function makeBufGeo(d){
@@ -172,20 +172,20 @@ if(D.bones){
 const interactableObjects=[];
 function reg(mesh,id){mesh.userData={id,isInteractable:true};interactableObjects.push(mesh);}
 
-const meTex=getTexture('sao_profile_screen.png');
+const meTex=getTexture('https://thitipan13.github.io/Final/sao_profile_screen.png');
 const meMesh=new THREE.Mesh(new THREE.PlaneGeometry(1.536,1.92),new THREE.MeshStandardMaterial({map:meTex,roughness:0.25,metalness:0.15,emissive:0x0284c7,emissiveMap:meTex,emissiveIntensity:0.12}));
 meMesh.position.set(0,1.57,-2.645);meMesh.receiveShadow=true;scene.add(meMesh);
 reg(meMesh,'center_monument');
 
 const R32=32*Math.PI/180;
-const paintTex=getTexture('paint.png');
+const paintTex=getTexture('https://thitipan13.github.io/Final/paint.png');
 const paintMesh=new THREE.Mesh(new THREE.PlaneGeometry(1.22,0.63),new THREE.MeshStandardMaterial({map:paintTex,roughness:0.35,metalness:0.1}));
 paintMesh.position.set(-2.446,2,-1.563);paintMesh.rotation.y=R32;paintMesh.castShadow=true;scene.add(paintMesh);
 const paintFrame=new THREE.Mesh(new THREE.PlaneGeometry(1.28,0.69),new THREE.MeshStandardMaterial({color:0x0284c7,roughness:0.28,metalness:0.8}));
 paintFrame.position.set(-2.448,2,-1.566);paintFrame.rotation.y=R32;scene.add(paintFrame);
 reg(paintMesh,'left_monument');reg(paintFrame,'left_monument');
 
-const icgTex=getTexture('interactive_cg.png');
+const icgTex=getTexture('https://thitipan13.github.io/Final/interactive_cg.png');
 const icgMesh=new THREE.Mesh(new THREE.PlaneGeometry(0.78,0.86),new THREE.MeshStandardMaterial({map:icgTex,roughness:0.35,metalness:0.1}));
 icgMesh.position.set(-2.446,1.18,-1.563);icgMesh.rotation.y=R32;icgMesh.castShadow=true;scene.add(icgMesh);
 const icgFrame=new THREE.Mesh(new THREE.PlaneGeometry(0.84,0.92),new THREE.MeshStandardMaterial({color:0x0ea5e9,roughness:0.28,metalness:0.8}));
